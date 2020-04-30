@@ -3,7 +3,107 @@ guid: d2422804896aa1445a3797ac9efeb36f
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hojas1
+    second: {fileID: 2100000, guid: 2f5d213fd62798447b2796a574eb8bc0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hojas2
+    second: {fileID: 2100000, guid: e659901695dd11043b99c0d1327fb898, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hojas3
+    second: {fileID: 2100000, guid: 23b782c8aa3769649b8ac629bb805069, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hojas4
+    second: {fileID: 2100000, guid: 9cb6699e561f9804a8177725959cf74e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hojas5
+    second: {fileID: 2100000, guid: d78eebfbecf7b8d4e8bc3561f7fca754, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hojas6
+    second: {fileID: 2100000, guid: 7b36011f5b9c3b145aac6cb834d632f2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: ebc99b47d93409c429bcd41f6f0d3bcb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert2
+    second: {fileID: 2100000, guid: 7b8dd9c2aa04d01489f618296c28f219, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: montana_cuerpo
+    second: {fileID: 2100000, guid: 0aab8f5ebc6575341a2d8d0e6ed27660, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: nube1
+    second: {fileID: 2100000, guid: 8e4c079006001cd41865be4816972b05, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: nube2
+    second: {fileID: 2100000, guid: c8096725ede687c42ac1b1824d9efd62, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasto
+    second: {fileID: 2100000, guid: faddeaac749c0db42a020f3dee4410bd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pico_montana
+    second: {fileID: 2100000, guid: 5504b2315ee89dc4cabda93ece7d430a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pisoinferior_montana
+    second: {fileID: 2100000, guid: 5043951a70cb15a4594feb83d43137ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: templo_alas
+    second: {fileID: 2100000, guid: fdfb66db253457d47a6fd8c9afa0932e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: templo_escaleras
+    second: {fileID: 2100000, guid: ac21cbbad0c1b1740a121b4af55f3ea5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: templo_rojo
+    second: {fileID: 2100000, guid: bdfee02c8c642eb49944b67905515d3c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tronco2
+    second: {fileID: 2100000, guid: d50f19d3a6ddb89479094126c6ae627f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tronco3
+    second: {fileID: 2100000, guid: 7d8c1e67568517342b05777cba4644a2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tronco4
+    second: {fileID: 2100000, guid: e9421ef2e39226146bfc04f4572d53f1, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
