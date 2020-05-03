@@ -19,11 +19,21 @@ public class zoom : MonoBehaviour {
           if (Physics.Raycast(ray, out hit)) {
             button = hit.transform.name;
             switch(button) {
-              case "Button_zoom":
+              case "mountain_button":
                 GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
                 transform.localScale = new Vector3(50,50,50);
                 mShowGUIButton = true;
                 // button.enabled = false;
+                break;
+              case "ocean_button":
+                GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
+                transform.localScale = new Vector3(50,50,50);
+                mShowGUIButton = true;
+                break;
+              case "temple_button":
+                GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
+                transform.localScale = new Vector3(50,50,50);
+                mShowGUIButton = true;
                 break;
               default:
                 break;
@@ -36,7 +46,18 @@ public class zoom : MonoBehaviour {
           if(Physics.Raycast(ray, out hit)) {
             button = hit.transform.name;
             switch(button) {
-              case "Button_zoom":
+              case "mountain_button":
+                GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
+                transform.localScale = new Vector3(50,50,50);
+                mShowGUIButton = true;
+                // button.enabled = false;
+                break;
+              case "ocean_button":
+                GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
+                transform.localScale = new Vector3(50,50,50);
+                mShowGUIButton = true;
+                break;
+              case "temple_button":
                 GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
                 transform.localScale = new Vector3(50,50,50);
                 mShowGUIButton = true;
