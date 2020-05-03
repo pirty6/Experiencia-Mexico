@@ -20,6 +20,7 @@ public class zoom : MonoBehaviour {
             button = hit.transform.name;
             switch(button) {
               case "mountain_button":
+                print("OWO");
                 GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
                 transform.localScale = new Vector3(50,50,50);
                 mShowGUIButton = true;
