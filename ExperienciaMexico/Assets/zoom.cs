@@ -7,6 +7,7 @@ public class zoom : MonoBehaviour {
   private bool mShowGUIButton = false;
   private Rect mButtonRect = new Rect(50,50,120,60);
   string button;
+  int layerMask = (1 << 8);
 
     // Start is called before the first frame update
     void Start() {
@@ -16,10 +17,12 @@ public class zoom : MonoBehaviour {
     void Update() {
       if(Input.GetMouseButton(0) || Input.GetMouseButtonDown(0)) {
           Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-          if (Physics.Raycast(ray, out hit)) {
+          if (Physics.Raycast(ray, out hit, layerMask)) {
+            Debug.Log("Touched object " + hit.transform.gameObject.name + " layer is " + hit.transform.gameObject.layer);
             button = hit.transform.name;
+            print("Raycast hitted: " + hit.transform.name);
             switch(button) {
-              case "mountain_button":
+              case "mountain_capsule":
                 print("OWO");
                 GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
                 transform.localScale = new Vector3(50,50,50);
@@ -37,6 +40,7 @@ public class zoom : MonoBehaviour {
                 mShowGUIButton = true;
                 break;
               default:
+                print(button);
                 break;
             }
           }
@@ -44,7 +48,7 @@ public class zoom : MonoBehaviour {
 
         if(Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began) {
           Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-          if(Physics.Raycast(ray, out hit)) {
+          if (Physics.Raycast(ray, out hit, layerMask)) {
             button = hit.transform.name;
             switch(button) {
               case "mountain_button":
@@ -75,7 +79,7 @@ public class zoom : MonoBehaviour {
       // draw the GUI button
       if (GUI.Button(mButtonRect, "Regresar")) {
         transform.localScale = new Vector3(15,15,15);
-        GameObject.Find(button).transform.localScale = new Vector3(0.06717828f, 0.006717828f, 0.06717828f);
+        GameObject.Find(button).transform.localScale = new Vector3(0.06717828f, 0.06717828, 0.06717828f);
         mShowGUIButton = false;
       }
     }
