@@ -94,22 +94,38 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
             print("Raycast hitted: " + hit.transform.name);
             switch(button) {
               case "mountain_capsule":
+                x = -0.1f;
+                z = 0.1f;
                 // GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
                 transform.localScale = new Vector3(50,50,50);
                 mShowGUIButton = true;
+                audioSource.clip = aClips[0];
+                audioSource.Play();
+                GameObject.Find("Fuji").transform.localPosition = new Vector3(x,0,z);
                 // button.enabled = false;
                 break;
               case "ocean_capsule":
                 // GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
+                x = -0.6f;
+                z = -0.7f;
                 transform.localScale = new Vector3(50,50,50);
                 mShowGUIButton = true;
+                audioSource.clip = aClips[1];
+                audioSource.Play();
+                GameObject.Find("Fuji").transform.localPosition = new Vector3(x,0,0.3f);
                 break;
               case "temple_capsule":
                 // GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
+                x = 0.1f;
+                z = -0.5f;
                 transform.localScale = new Vector3(50,50,50);
                 mShowGUIButton = true;
+                audioSource.clip = aClips[2];
+                audioSource.Play();
+                GameObject.Find("Fuji").transform.localPosition = new Vector3(x,0,z);
                 break;
               default:
+                print(button);
                 break;
             }
           }

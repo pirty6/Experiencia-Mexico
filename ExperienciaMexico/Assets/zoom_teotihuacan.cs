@@ -93,7 +93,6 @@ public class zoom_teotihuacan : MonoBehaviour, ITrackableEventHandler {
                 mShowGUIButton = true;
                 audioSource.clip = aClips[0];
                 audioSource.Play();
-                GameObject.Find("Teotihuacan").transform.localPosition = new Vector3(x,0,z);
                 // button.enabled = false;
                 break;
               case "moon_temple_capsule":
@@ -105,7 +104,7 @@ public class zoom_teotihuacan : MonoBehaviour, ITrackableEventHandler {
                 z = 0.45f;
                 GameObject.Find("Teotihuacan").transform.localPosition = new Vector3(x,0,z);
                 break;
-              case "temple_capsule":
+              case "other_temple_capsule":
                 transform.localScale = new Vector3(50,50,50);
                 mShowGUIButton = true;
                 // audioSource.clip = aClips[2];
