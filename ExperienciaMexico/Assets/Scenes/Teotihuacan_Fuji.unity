@@ -785,7 +785,7 @@ GameObject:
   - component: {fileID: 107748058}
   - component: {fileID: 107748057}
   m_Layer: 8
-  m_Name: ocean_capsule
+  m_Name: moon_temple_capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1157,7 +1157,7 @@ GameObject:
   - component: {fileID: 208002380}
   - component: {fileID: 208002379}
   m_Layer: 8
-  m_Name: mountain_capsule
+  m_Name: sun_temple_capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6805,7 +6805,7 @@ GameObject:
   - component: {fileID: 547871155}
   - component: {fileID: 547871154}
   m_Layer: 8
-  m_Name: temple_capsule
+  m_Name: other_temple_capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
