@@ -15,6 +15,8 @@ public class zoom : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
+      audioSource.clip = aClips[3];
+      audioSource.Play();
     }
 
     // Update is called once per frame
