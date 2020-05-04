@@ -67,14 +67,8 @@ public class zoom_teotihuacan : MonoBehaviour, ITrackableEventHandler {
                 x = -0.1f;
                 z = 0.45f;
                 GameObject.Find("Teotihuacan").transform.localPosition = new Vector3(x,0,z);
-                for(int i = 0; i < 3; i++) {
-                  GameObject.Find(sarray[i]).transform.localPosition = new Vector3(
-                    GameObject.Find(sarray[i]).transform.localPosition.x + x,
-                    GameObject.Find(sarray[i]).transform.localPosition.y,
-                    GameObject.Find(sarray[i]).transform.localPosition.z + z);
-                }
                 break;
-              case "temple_capsule":
+              case "other_temple_capsule":
                 transform.localScale = new Vector3(50,50,50);
                 mShowGUIButton = true;
                 // audioSource.clip = aClips[2];
@@ -99,6 +93,7 @@ public class zoom_teotihuacan : MonoBehaviour, ITrackableEventHandler {
                 mShowGUIButton = true;
                 audioSource.clip = aClips[0];
                 audioSource.Play();
+                GameObject.Find("Teotihuacan").transform.localPosition = new Vector3(x,0,z);
                 // button.enabled = false;
                 break;
               case "moon_temple_capsule":
@@ -109,12 +104,6 @@ public class zoom_teotihuacan : MonoBehaviour, ITrackableEventHandler {
                 x = -0.1f;
                 z = 0.45f;
                 GameObject.Find("Teotihuacan").transform.localPosition = new Vector3(x,0,z);
-                for(int i = 0; i < 3; i++) {
-                  GameObject.Find(sarray[i]).transform.localPosition = new Vector3(
-                    GameObject.Find(sarray[i]).transform.localPosition.x + x,
-                    GameObject.Find(sarray[i]).transform.localPosition.y,
-                    GameObject.Find(sarray[i]).transform.localPosition.z + z);
-                }
                 break;
               case "temple_capsule":
                 transform.localScale = new Vector3(50,50,50);
@@ -136,14 +125,6 @@ public class zoom_teotihuacan : MonoBehaviour, ITrackableEventHandler {
         GameObject.Find("Teotihuacan").transform.localPosition = new Vector3(0,0,0);
         transform.localScale = new Vector3(15,15,15);
         audioSource.Stop();
-
-        for(int i = 0; i < 3; i++) {
-          GameObject.Find(sarray[i]).transform.localPosition = new Vector3(
-            GameObject.Find(sarray[i]).transform.localPosition.x - x,
-            GameObject.Find(sarray[i]).transform.localPosition.y,
-            GameObject.Find(sarray[i]).transform.localPosition.z - z);
-        }
-
         mShowGUIButton = false;
       }
     }
