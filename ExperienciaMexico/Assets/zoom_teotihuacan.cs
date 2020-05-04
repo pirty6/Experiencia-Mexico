@@ -13,8 +13,10 @@ public class zoom_teotihuacan : MonoBehaviour, ITrackableEventHandler {
   private bool mShowGUIButton = false;
   private Rect mButtonRect = new Rect(50,50,120,60);
   string button;
-  string[] sarray = {"sun_temple_capsule", "moon_temple_capsule", "temple_capsule"};
+  string[] sarray = {"sun_temple_capsule", "moon_temple_capsule", "other_temple_capsule"};
   int layerMask = (1 << 8);
+  float x = 0;
+  float z = 0;
 
     // Start is called before the first frame update
     void Start() {
@@ -49,7 +51,8 @@ public class zoom_teotihuacan : MonoBehaviour, ITrackableEventHandler {
             print("Raycast hitted: " + hit.transform.name);
             switch(button) {
               case "sun_temple_capsule":
-                GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
+                x = 0;
+                z = 0;
                 transform.localScale = new Vector3(50,50,50);
                 mShowGUIButton = true;
                 audioSource.clip = aClips[0];
@@ -57,22 +60,27 @@ public class zoom_teotihuacan : MonoBehaviour, ITrackableEventHandler {
                 // button.enabled = false;
                 break;
               case "moon_temple_capsule":
-                GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
                 transform.localScale = new Vector3(50,50,50);
                 mShowGUIButton = true;
                 audioSource.clip = aClips[1];
                 audioSource.Play();
-                GameObject.Find("Teotihuacan").transform.localPosition = new Vector3(-0.1f,0,0.45f);
+                x = -0.1f;
+                z = 0.45f;
+                GameObject.Find("Teotihuacan").transform.localPosition = new Vector3(x,0,z);
+                for(int i = 0; i < 3; i++) {
+                  GameObject.Find(sarray[i]).transform.localPosition = new Vector3(
+                    GameObject.Find(sarray[i]).transform.localPosition.x + x,
+                    GameObject.Find(sarray[i]).transform.localPosition.y,
+                    GameObject.Find(sarray[i]).transform.localPosition.z + z);
+                }
                 break;
               case "temple_capsule":
-                GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
                 transform.localScale = new Vector3(50,50,50);
                 mShowGUIButton = true;
-                audioSource.clip = aClips[2];
-                audioSource.Play();
+                // audioSource.clip = aClips[2];
+                // audioSource.Play();
                 break;
               default:
-                print(button);
                 break;
             }
           }
@@ -84,21 +92,35 @@ public class zoom_teotihuacan : MonoBehaviour, ITrackableEventHandler {
             button = hit.transform.name;
             print("Raycast hitted: " + hit.transform.name);
             switch(button) {
-              case "mountain_capsule":
-                GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
+              case "sun_temple_capsule":
+                x = 0;
+                z = 0;
                 transform.localScale = new Vector3(50,50,50);
                 mShowGUIButton = true;
+                audioSource.clip = aClips[0];
+                audioSource.Play();
                 // button.enabled = false;
                 break;
-              case "ocean_capsule":
-                GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
+              case "moon_temple_capsule":
                 transform.localScale = new Vector3(50,50,50);
                 mShowGUIButton = true;
+                audioSource.clip = aClips[1];
+                audioSource.Play();
+                x = -0.1f;
+                z = 0.45f;
+                GameObject.Find("Teotihuacan").transform.localPosition = new Vector3(x,0,z);
+                for(int i = 0; i < 3; i++) {
+                  GameObject.Find(sarray[i]).transform.localPosition = new Vector3(
+                    GameObject.Find(sarray[i]).transform.localPosition.x + x,
+                    GameObject.Find(sarray[i]).transform.localPosition.y,
+                    GameObject.Find(sarray[i]).transform.localPosition.z + z);
+                }
                 break;
               case "temple_capsule":
-                GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
                 transform.localScale = new Vector3(50,50,50);
                 mShowGUIButton = true;
+                // audioSource.clip = aClips[2];
+                // audioSource.Play();
                 break;
               default:
                 break;
@@ -111,12 +133,17 @@ public class zoom_teotihuacan : MonoBehaviour, ITrackableEventHandler {
     if (mShowGUIButton) {
       // draw the GUI button
       if (GUI.Button(mButtonRect, "Regresar")) {
-        GameObject.Find("Teotihuacan").transform.localPosition = new Vector3(0.09f,0,0);
+        GameObject.Find("Teotihuacan").transform.localPosition = new Vector3(0,0,0);
         transform.localScale = new Vector3(15,15,15);
-        for(int i = 0; i < 3; i++) {
-          GameObject.Find(sarray[i]).transform.localScale = new Vector3(0.06717828f, 0.06717828f, 0.06717828f);
-        }
         audioSource.Stop();
+
+        for(int i = 0; i < 3; i++) {
+          GameObject.Find(sarray[i]).transform.localPosition = new Vector3(
+            GameObject.Find(sarray[i]).transform.localPosition.x - x,
+            GameObject.Find(sarray[i]).transform.localPosition.y,
+            GameObject.Find(sarray[i]).transform.localPosition.z - z);
+        }
+
         mShowGUIButton = false;
       }
     }

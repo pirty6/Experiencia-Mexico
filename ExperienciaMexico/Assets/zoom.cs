@@ -48,7 +48,7 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
             print("Raycast hitted: " + hit.transform.name);
             switch(button) {
               case "mountain_capsule":
-                GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
+                // GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
                 transform.localScale = new Vector3(50,50,50);
                 mShowGUIButton = true;
                 audioSource.clip = aClips[0];
@@ -56,14 +56,14 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
                 // button.enabled = false;
                 break;
               case "ocean_capsule":
-                GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
+                // GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
                 transform.localScale = new Vector3(50,50,50);
                 mShowGUIButton = true;
                 audioSource.clip = aClips[1];
                 audioSource.Play();
                 break;
               case "temple_capsule":
-                GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
+                // GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
                 transform.localScale = new Vector3(50,50,50);
                 mShowGUIButton = true;
                 audioSource.clip = aClips[2];
@@ -83,18 +83,18 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
             print("Raycast hitted: " + hit.transform.name);
             switch(button) {
               case "mountain_capsule":
-                GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
+                // GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
                 transform.localScale = new Vector3(50,50,50);
                 mShowGUIButton = true;
                 // button.enabled = false;
                 break;
               case "ocean_capsule":
-                GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
+                // GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
                 transform.localScale = new Vector3(50,50,50);
                 mShowGUIButton = true;
                 break;
               case "temple_capsule":
-                GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
+                // GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
                 transform.localScale = new Vector3(50,50,50);
                 mShowGUIButton = true;
                 break;
@@ -110,9 +110,9 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
       // draw the GUI button
       if (GUI.Button(mButtonRect, "Regresar")) {
         transform.localScale = new Vector3(15,15,15);
-        for(int i = 0; i < 3; i++) {
-          GameObject.Find(sarray[i]).transform.localScale = new Vector3(0.06717828f, 0.06717828f, 0.06717828f);
-        }
+        // for(int i = 0; i < 3; i++) {
+        //   GameObject.Find(sarray[i]).transform.localScale = new Vector3(0.06717828f, 0.06717828f, 0.06717828f);
+        // }
         audioSource.Stop();
         mShowGUIButton = false;
       }
