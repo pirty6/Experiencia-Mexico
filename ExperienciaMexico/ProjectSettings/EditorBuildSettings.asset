@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Fuji.unity
+    guid: 9419da81e4d1e6c4893b9f34314af4eb
   m_configObjects: {}
