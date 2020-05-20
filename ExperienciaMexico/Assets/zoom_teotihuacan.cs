@@ -6,6 +6,7 @@ using Vuforia;
 public class zoom_teotihuacan : MonoBehaviour, ITrackableEventHandler {
   public AudioClip[] aClips;
   public AudioSource audioSource;
+  public AudioSource background;
 
   private TrackableBehaviour mTrackableBehaviour;
 
@@ -20,6 +21,7 @@ public class zoom_teotihuacan : MonoBehaviour, ITrackableEventHandler {
 
     // Start is called before the first frame update
     void Start() {
+      background.loop = true;
       mTrackableBehaviour = GetComponent<TrackableBehaviour>();
       if (mTrackableBehaviour) {
         mTrackableBehaviour.RegisterTrackableEventHandler(this);
@@ -36,9 +38,11 @@ public class zoom_teotihuacan : MonoBehaviour, ITrackableEventHandler {
 			           // Play audio when target is found
                  audioSource.clip = aClips[3];
                  audioSource.Play();
+                 background.PlayOneShot(aClips[4]);
         } else {
 			       // Stop audio when target is lost
 			       audioSource.Stop();
+             background.Stop();
         }
     }
 
