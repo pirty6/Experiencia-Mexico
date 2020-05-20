@@ -6,6 +6,7 @@ using Vuforia;
 public class zoom : MonoBehaviour, ITrackableEventHandler {
   public AudioClip[] aClips;
   public AudioSource audioSource;
+  public AudioSource background;
 
   private TrackableBehaviour mTrackableBehaviour;
 
@@ -20,6 +21,7 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
 
     // Start is called before the first frame update
     void Start() {
+      background.loop = true;
       mTrackableBehaviour = GetComponent<TrackableBehaviour>();
       if (mTrackableBehaviour) {
         mTrackableBehaviour.RegisterTrackableEventHandler(this);
@@ -35,9 +37,11 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
 			           // Play audio when target is found
                  audioSource.clip = aClips[3];
                  audioSource.Play();
+                 background.PlayOneShot(aClips[4]);
         } else {
 			       // Stop audio when target is lost
 			       audioSource.Stop();
+             background.Stop();
         }
     }
 
@@ -137,7 +141,7 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
       // draw the GUI button
       if (GUI.Button(mButtonRect, "Regresar")) {
         GameObject.Find("Fuji").transform.localPosition = new Vector3(0,0,0);
-        transform.localScale = new Vector3(15,15,15);
+        transform.localScale = new Vector3(22.0687f,22.0687f,22.0687f);
         audioSource.Stop();
         mShowGUIButton = false;
       }
