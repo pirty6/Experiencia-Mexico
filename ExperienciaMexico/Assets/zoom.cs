@@ -86,8 +86,11 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
                 transform.localScale = new Vector3(50,50,50);
                 mShowGUIButton = true;
                 audioSource.clip = aClips[2];
-                audioSource.Play();
+                //audioSource.Play();
                 GameObject.Find("Fuji").transform.localPosition = new Vector3(x,0,z);
+                active = GameObject.Find("VideoTemple");
+                active.transform.localScale = new Vector3(0.01116154f, 0.005942067f, 0.0001076876f);
+                active.GetComponent<VideoPlayer>().Play();
                 break;
               default:
                 print(button);
