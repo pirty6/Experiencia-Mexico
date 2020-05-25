@@ -42,6 +42,9 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
                  background.PlayOneShot(aClips[4]);
         } else {
 			       // Stop audio when target is lost
+             if(active != null) {
+               active.GetComponent<VideoPlayer>().Stop();
+             }
 			       audioSource.Stop();
              background.Stop();
         }
