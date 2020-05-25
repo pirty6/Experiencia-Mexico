@@ -76,8 +76,11 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
                 transform.localScale = new Vector3(50,50,50);
                 mShowGUIButton = true;
                 audioSource.clip = aClips[1];
-                audioSource.Play();
+                //audioSource.Play();
                 GameObject.Find("Fuji").transform.localPosition = new Vector3(x,0,0.3f);
+                active = GameObject.Find("VideoOcean");
+                active.transform.localScale = new Vector3(0.01116154f, 0.005942067f, 0.0001076876f);
+                active.GetComponent<VideoPlayer>().Play();
                 break;
               case "temple_capsule":
                 // GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
@@ -114,6 +117,9 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
                 audioSource.clip = aClips[0];
                 //audioSource.Play();
                 GameObject.Find("Fuji").transform.localPosition = new Vector3(x,0,z);
+                active = GameObject.Find("VideoMountain");
+                active.transform.localScale = new Vector3(0.01116154f, 0.005942067f, 0.0001076876f);
+                active.GetComponent<VideoPlayer>().Play();
                 // button.enabled = false;
                 break;
               case "ocean_capsule":
@@ -123,8 +129,11 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
                 transform.localScale = new Vector3(50,50,50);
                 mShowGUIButton = true;
                 audioSource.clip = aClips[1];
-                audioSource.Play();
+                //audioSource.Play();
                 GameObject.Find("Fuji").transform.localPosition = new Vector3(x,0,0.3f);
+                active = GameObject.Find("VideoOcean");
+                active.transform.localScale = new Vector3(0.01116154f, 0.005942067f, 0.0001076876f);
+                active.GetComponent<VideoPlayer>().Play();
                 break;
               case "temple_capsule":
                 // GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
@@ -133,8 +142,11 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
                 transform.localScale = new Vector3(50,50,50);
                 mShowGUIButton = true;
                 audioSource.clip = aClips[2];
-                audioSource.Play();
+                //audioSource.Play();
                 GameObject.Find("Fuji").transform.localPosition = new Vector3(x,0,z);
+                active = GameObject.Find("VideoTemple");
+                active.transform.localScale = new Vector3(0.01116154f, 0.005942067f, 0.0001076876f);
+                active.GetComponent<VideoPlayer>().Play();
                 break;
               default:
                 print(button);
