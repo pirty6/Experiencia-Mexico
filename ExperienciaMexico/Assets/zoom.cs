@@ -148,6 +148,8 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
         GameObject.Find("Fuji").transform.localPosition = new Vector3(0,0,0);
         transform.localScale = new Vector3(22.0687f,22.0687f,22.0687f);
         audioSource.Stop();
+        active.transform.localScale = new Vector3(0,0,0);
+        active.GetComponent<VideoPlayer>().Stop();
         mShowGUIButton = false;
       }
     }
