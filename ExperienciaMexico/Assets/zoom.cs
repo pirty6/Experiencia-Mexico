@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Vuforia;
+using UnityEngine.Video;
 
 public class zoom : MonoBehaviour, ITrackableEventHandler {
   public AudioClip[] aClips;
@@ -104,7 +105,7 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
                 transform.localScale = new Vector3(50,50,50);
                 mShowGUIButton = true;
                 audioSource.clip = aClips[0];
-                audioSource.Play();
+                //audioSource.Play();
                 GameObject.Find("Fuji").transform.localPosition = new Vector3(x,0,z);
                 // button.enabled = false;
                 break;
