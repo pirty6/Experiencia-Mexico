@@ -19,6 +19,7 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
   int layerMask = (1 << 8);
   float x = 0;
   float z = 0;
+  GameObject active;
 
     // Start is called before the first frame update
     void Start() {
@@ -61,8 +62,11 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
                 transform.localScale = new Vector3(50,50,50);
                 mShowGUIButton = true;
                 audioSource.clip = aClips[0];
-                audioSource.Play();
+                //audioSource.Play();
                 GameObject.Find("Fuji").transform.localPosition = new Vector3(x,0,z);
+                active = GameObject.Find("VideoMountain");
+                active.transform.localScale = new Vector3(0.01116154f, 0.005942067f, 0.0001076876f);
+                active.GetComponent<VideoPlayer>().Play();
                 // button.enabled = false;
                 break;
               case "ocean_capsule":
