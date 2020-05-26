@@ -62,11 +62,11 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
                 x = -0.1f;
                 z = 0.1f;
                 // GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
-                transform.localScale = new Vector3(50,50,50);
-                mShowGUIButton = true;
+               // transform.localScale = new Vector3(50,50,50);
+               // mShowGUIButton = true;
                 audioSource.clip = aClips[0];
                 //audioSource.Play();
-                GameObject.Find("Fuji").transform.localPosition = new Vector3(x,0,z);
+                //GameObject.Find("Fuji").transform.localPosition = new Vector3(x,0,z);
                 active = GameObject.Find("VideoMountain");
                 active.transform.localScale = new Vector3(0.01116154f, 0.005942067f, 0.0001076876f);
                 active.GetComponent<VideoPlayer>().Play();
@@ -76,11 +76,11 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
                 // GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
                 x = -0.6f;
                 z = -0.7f;
-                transform.localScale = new Vector3(50,50,50);
-                mShowGUIButton = true;
+               // transform.localScale = new Vector3(50,50,50);
+              //  mShowGUIButton = true;
                 audioSource.clip = aClips[1];
                 //audioSource.Play();
-                GameObject.Find("Fuji").transform.localPosition = new Vector3(x,0,0.3f);
+               // GameObject.Find("Fuji").transform.localPosition = new Vector3(x,0,0.3f);
                 active = GameObject.Find("VideoOcean");
                 active.transform.localScale = new Vector3(0.01116154f, 0.005942067f, 0.0001076876f);
                 active.GetComponent<VideoPlayer>().Play();
@@ -89,11 +89,11 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
                 // GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
                 x = 0.1f;
                 z = -0.5f;
-                transform.localScale = new Vector3(50,50,50);
-                mShowGUIButton = true;
+                //transform.localScale = new Vector3(50,50,50);
+               // mShowGUIButton = true;
                 audioSource.clip = aClips[2];
                 //audioSource.Play();
-                GameObject.Find("Fuji").transform.localPosition = new Vector3(x,0,z);
+               // GameObject.Find("Fuji").transform.localPosition = new Vector3(x,0,z);
                 active = GameObject.Find("VideoTemple");
                 active.transform.localScale = new Vector3(0.01116154f, 0.005942067f, 0.0001076876f);
                 active.GetComponent<VideoPlayer>().Play();
@@ -115,11 +115,11 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
                 x = -0.1f;
                 z = 0.1f;
                 // GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
-                transform.localScale = new Vector3(50,50,50);
-                mShowGUIButton = true;
+              //  transform.localScale = new Vector3(50,50,50);
+               // mShowGUIButton = true;
                 audioSource.clip = aClips[0];
                 //audioSource.Play();
-                GameObject.Find("Fuji").transform.localPosition = new Vector3(x,0,z);
+               // GameObject.Find("Fuji").transform.localPosition = new Vector3(x,0,z);
                 active = GameObject.Find("VideoMountain");
                 active.transform.localScale = new Vector3(0.01116154f, 0.005942067f, 0.0001076876f);
                 active.GetComponent<VideoPlayer>().Play();
@@ -129,11 +129,11 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
                 // GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
                 x = -0.6f;
                 z = -0.7f;
-                transform.localScale = new Vector3(50,50,50);
-                mShowGUIButton = true;
+               // transform.localScale = new Vector3(50,50,50);
+               // mShowGUIButton = true;
                 audioSource.clip = aClips[1];
                 //audioSource.Play();
-                GameObject.Find("Fuji").transform.localPosition = new Vector3(x,0,0.3f);
+             //   GameObject.Find("Fuji").transform.localPosition = new Vector3(x,0,0.3f);
                 active = GameObject.Find("VideoOcean");
                 active.transform.localScale = new Vector3(0.01116154f, 0.005942067f, 0.0001076876f);
                 active.GetComponent<VideoPlayer>().Play();
@@ -142,11 +142,11 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
                 // GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
                 x = 0.1f;
                 z = -0.5f;
-                transform.localScale = new Vector3(50,50,50);
-                mShowGUIButton = true;
+              //  transform.localScale = new Vector3(50,50,50);
+              //  mShowGUIButton = true;
                 audioSource.clip = aClips[2];
                 //audioSource.Play();
-                GameObject.Find("Fuji").transform.localPosition = new Vector3(x,0,z);
+               // GameObject.Find("Fuji").transform.localPosition = new Vector3(x,0,z);
                 active = GameObject.Find("VideoTemple");
                 active.transform.localScale = new Vector3(0.01116154f, 0.005942067f, 0.0001076876f);
                 active.GetComponent<VideoPlayer>().Play();
@@ -163,8 +163,8 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
     if (mShowGUIButton) {
       // draw the GUI button
       if (GUI.Button(mButtonRect, "Regresar")) {
-        GameObject.Find("Fuji").transform.localPosition = new Vector3(0,0,0);
-        transform.localScale = new Vector3(22.0687f,22.0687f,22.0687f);
+       // GameObject.Find("Fuji").transform.localPosition = new Vector3(0,0,0);
+       // transform.localScale = new Vector3(22.0687f,22.0687f,22.0687f);
         audioSource.Stop();
         active.transform.localScale = new Vector3(0,0,0);
         active.GetComponent<VideoPlayer>().Stop();
