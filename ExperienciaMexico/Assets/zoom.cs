@@ -20,6 +20,7 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
   float x = 0;
   float z = 0;
   GameObject active;
+  private static bool loaded = false;
 
     // Start is called before the first frame update
     void Start() {
@@ -38,7 +39,10 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
             newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED) {
 			           // Play audio when target is found
                  audioSource.clip = aClips[3];
-                 audioSource.Play();
+                 if(loaded == false) {
+                   audioSource.Play();
+                   Invoke("ToggleSave", 7.8f);
+                 }
                  background.PlayOneShot(aClips[4]);
         } else {
 			       // Stop audio when target is lost
@@ -97,6 +101,18 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
                 active = GameObject.Find("VideoTemple");
                 active.transform.localScale = new Vector3(0.01116154f, 0.005942067f, 0.0001076876f);
                 active.GetComponent<VideoPlayer>().Play();
+                break;
+              case "Reset_Fuji":
+                ToggleSave();
+                audioSource.Stop();
+                active.transform.localScale = new Vector3(0,0,0);
+                active.GetComponent<VideoPlayer>().Stop();
+                audioSource.clip = aClips[3];
+                audioSource.Play();
+                background.PlayOneShot(aClips[4]);
+                if(loaded == false) {
+                  Invoke("ToggleSave", 7.8f);
+                }
                 break;
               default:
                 print(button);
@@ -158,6 +174,11 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
           }
         }
     }
+
+  void ToggleSave() {
+      loaded = !loaded;
+      print(loaded);
+  }
 
   void OnGUI() {
     if (mShowGUIButton) {
