@@ -172,7 +172,6 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
 
   void ToggleSave() {
       loaded = true;
-      print(loaded);
   }
 
   void OnGUI() {

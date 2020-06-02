@@ -20,6 +20,9 @@ public class zoom_teotihuacan : MonoBehaviour, ITrackableEventHandler {
   float x = 0;
   float z = 0;
   GameObject active;
+  private static bool loaded = false;
+  private static bool isPlaying = true;
+  private float timer = 0.0f;
 
     // Start is called before the first frame update
     void Start() {
@@ -39,12 +42,18 @@ public class zoom_teotihuacan : MonoBehaviour, ITrackableEventHandler {
             newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED) {
 			           // Play audio when target is found
                  audioSource.clip = aClips[3];
-                 audioSource.Play();
-                 background.PlayOneShot(aClips[4]);
+                 if(loaded == false) {
+                   audioSource.Play();
+                   Invoke("ToggleSave", 7.8f);
+                 }
+                 background.time = timer;
+                 background.clip = aClips[4];
+                 background.Play();
         } else {
+            timer = background.time;
 			       // Stop audio when target is lost
              if(active != null) {
-               active.GetComponent<VideoPlayer>().Stop();
+               active.GetComponent<VideoPlayer>().Pause();
              }
 			       audioSource.Stop();
              background.Stop();
@@ -60,41 +69,42 @@ public class zoom_teotihuacan : MonoBehaviour, ITrackableEventHandler {
             print("Raycast hitted: " + hit.transform.name);
             switch(button) {
               case "sun_temple_capsule":
-                x = 0;
-                z = 0;
-                transform.localScale = new Vector3(50,50,50);
-                mShowGUIButton = true;
+                ToggleSave();
                 audioSource.clip = aClips[0];
                 active = GameObject.Find("VideoMajorTemple");
                 active.transform.localScale = new Vector3(76.55721f, 39.1688f, 0.5404546f);
                 active.GetComponent<VideoPlayer>().Play();
-                //audioSource.Play();
-                // button.enabled = false;
                 break;
               case "moon_temple_capsule":
-                transform.localScale = new Vector3(50,50,50);
-                mShowGUIButton = true;
+                ToggleSave();
                 audioSource.clip = aClips[1];
                 //audioSource.Play();
-                x = -0.1f;
-                z = 0.45f;
-                GameObject.Find("Teotihuacan").transform.localPosition = new Vector3(x,0,z);
                 active = GameObject.Find("VideoMinorTemple");
                 active.transform.localScale = new Vector3(76.55721f, 39.1688f, 0.5404546f);
                 active.GetComponent<VideoPlayer>().Play();
                 break;
               case "other_temple_capsule":
-                transform.localScale = new Vector3(50,50,50);
-                x = 0.5f;
-                z = 0.40f;
-                GameObject.Find("Teotihuacan").transform.localPosition = new Vector3(x,0,z);
-                mShowGUIButton = true;
+                ToggleSave();
                 active = GameObject.Find("VideoOtherTemple");
                 active.transform.localScale = new Vector3(76.55721f, 39.1688f, 0.5404546f);
                 active.GetComponent<VideoPlayer>().Play();
                 // audioSource.clip = aClips[2];
                 // audioSource.Play();
                 break;
+                case "Reset_Teo":
+                  loaded = false;
+                  timer = 0.0f;
+                  audioSource.Stop();
+                  background.Stop();
+                  active.transform.localScale = new Vector3(0,0,0);
+                  active.GetComponent<VideoPlayer>().Stop();
+                  audioSource.clip = aClips[3];
+                  audioSource.Play();
+                  background.Play();
+                  if(loaded == false) {
+                    Invoke("ToggleSave", 7.8f);
+                  }
+                  break;
               default:
                 break;
             }
@@ -108,41 +118,42 @@ public class zoom_teotihuacan : MonoBehaviour, ITrackableEventHandler {
             print("Raycast hitted: " + hit.transform.name);
             switch(button) {
               case "sun_temple_capsule":
-                x = 0;
-                z = 0;
-                transform.localScale = new Vector3(50,50,50);
-                mShowGUIButton = true;
+                ToggleSave();
                 audioSource.clip = aClips[0];
                 active = GameObject.Find("VideoMajorTemple");
                 active.transform.localScale = new Vector3(76.55721f, 39.1688f, 0.5404546f);
                 active.GetComponent<VideoPlayer>().Play();
-                //audioSource.Play();
-                // button.enabled = false;
                 break;
               case "moon_temple_capsule":
-                transform.localScale = new Vector3(50,50,50);
-                mShowGUIButton = true;
+                ToggleSave();
                 audioSource.clip = aClips[1];
                 //audioSource.Play();
-                x = -0.1f;
-                z = 0.45f;
-                GameObject.Find("Teotihuacan").transform.localPosition = new Vector3(x,0,z);
                 active = GameObject.Find("VideoMinorTemple");
                 active.transform.localScale = new Vector3(76.55721f, 39.1688f, 0.5404546f);
                 active.GetComponent<VideoPlayer>().Play();
                 break;
               case "other_temple_capsule":
-                transform.localScale = new Vector3(50,50,50);
-                x = 0.5f;
-                z = 0.40f;
-                GameObject.Find("Teotihuacan").transform.localPosition = new Vector3(x,0,z);
-                mShowGUIButton = true;
+                ToggleSave();
                 active = GameObject.Find("VideoOtherTemple");
                 active.transform.localScale = new Vector3(76.55721f, 39.1688f, 0.5404546f);
                 active.GetComponent<VideoPlayer>().Play();
                 // audioSource.clip = aClips[2];
                 // audioSource.Play();
                 break;
+                case "Reset_Teo":
+                  loaded = false;
+                  timer = 0.0f;
+                  audioSource.Stop();
+                  background.Stop();
+                  active.transform.localScale = new Vector3(0,0,0);
+                  active.GetComponent<VideoPlayer>().Stop();
+                  audioSource.clip = aClips[3];
+                  audioSource.Play();
+                  background.Play();
+                  if(loaded == false) {
+                    Invoke("ToggleSave", 7.8f);
+                  }
+                  break;
               default:
                 break;
             }
@@ -150,12 +161,14 @@ public class zoom_teotihuacan : MonoBehaviour, ITrackableEventHandler {
         }
     }
 
+  void ToggleSave() {
+      loaded = true;
+  }
+
   void OnGUI() {
     if (mShowGUIButton) {
       // draw the GUI button
       if (GUI.Button(mButtonRect, "Regresar")) {
-        GameObject.Find("Teotihuacan").transform.localPosition = new Vector3(0,0,0);
-        transform.localScale = new Vector3(15,15,15);
         audioSource.Stop();
         active.transform.localScale = new Vector3(0,0,0);
         active.GetComponent<VideoPlayer>().Stop();
