@@ -21,6 +21,7 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
   float z = 0;
   GameObject active;
   private static bool loaded = false;
+  private float timer = 0.0f;
 
     // Start is called before the first frame update
     void Start() {
@@ -43,8 +44,11 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
                    audioSource.Play();
                    Invoke("ToggleSave", 7.8f);
                  }
-                 background.PlayOneShot(aClips[4]);
+                 background.time = timer;
+                 background.clip = aClips[4];
+                 background.Play();
         } else {
+            timer = background.time;
 			       // Stop audio when target is lost
              if(active != null) {
                active.GetComponent<VideoPlayer>().Stop();
@@ -104,6 +108,7 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
                 break;
               case "Reset_Fuji":
                 ToggleSave();
+                timer = 0.0f;
                 audioSource.Stop();
                 active.transform.localScale = new Vector3(0,0,0);
                 active.GetComponent<VideoPlayer>().Stop();
