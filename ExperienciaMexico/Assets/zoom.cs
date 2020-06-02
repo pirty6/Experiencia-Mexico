@@ -20,6 +20,9 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
   float x = 0;
   float z = 0;
   GameObject active;
+  private static bool loaded = false;
+  private static bool isPlaying = true;
+  private float timer = 0.0f;
 
     // Start is called before the first frame update
     void Start() {
@@ -38,12 +41,18 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
             newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED) {
 			           // Play audio when target is found
                  audioSource.clip = aClips[3];
-                 audioSource.Play();
-                 background.PlayOneShot(aClips[4]);
+                 if(loaded == false) {
+                   audioSource.Play();
+                   Invoke("ToggleSave", 7.8f);
+                 }
+                 background.time = timer;
+                 background.clip = aClips[4];
+                 background.Play();
         } else {
+            timer = background.time;
 			       // Stop audio when target is lost
              if(active != null) {
-               active.GetComponent<VideoPlayer>().Stop();
+               active.GetComponent<VideoPlayer>().Pause();
              }
 			       audioSource.Stop();
              background.Stop();
@@ -59,44 +68,45 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
             print("Raycast hitted: " + hit.transform.name);
             switch(button) {
               case "mountain_capsule":
+                ToggleSave();
                 x = -0.1f;
                 z = 0.1f;
-                // GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
-               // transform.localScale = new Vector3(50,50,50);
-               // mShowGUIButton = true;
                 audioSource.clip = aClips[0];
-                //audioSource.Play();
-                //GameObject.Find("Fuji").transform.localPosition = new Vector3(x,0,z);
                 active = GameObject.Find("VideoMountain");
                 active.transform.localScale = new Vector3(0.01116154f, 0.005942067f, 0.0001076876f);
                 active.GetComponent<VideoPlayer>().Play();
-                // button.enabled = false;
                 break;
               case "ocean_capsule":
-                // GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
+                ToggleSave();
                 x = -0.6f;
                 z = -0.7f;
-               // transform.localScale = new Vector3(50,50,50);
-              //  mShowGUIButton = true;
                 audioSource.clip = aClips[1];
-                //audioSource.Play();
-               // GameObject.Find("Fuji").transform.localPosition = new Vector3(x,0,0.3f);
                 active = GameObject.Find("VideoOcean");
                 active.transform.localScale = new Vector3(0.01116154f, 0.005942067f, 0.0001076876f);
                 active.GetComponent<VideoPlayer>().Play();
                 break;
               case "temple_capsule":
-                // GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
+                ToggleSave();
                 x = 0.1f;
                 z = -0.5f;
-                //transform.localScale = new Vector3(50,50,50);
-               // mShowGUIButton = true;
                 audioSource.clip = aClips[2];
-                //audioSource.Play();
-               // GameObject.Find("Fuji").transform.localPosition = new Vector3(x,0,z);
                 active = GameObject.Find("VideoTemple");
                 active.transform.localScale = new Vector3(0.01116154f, 0.005942067f, 0.0001076876f);
                 active.GetComponent<VideoPlayer>().Play();
+                break;
+              case "Reset_Fuji":
+                loaded = false;
+                timer = 0.0f;
+                audioSource.Stop();
+                background.Stop();
+                active.transform.localScale = new Vector3(0,0,0);
+                active.GetComponent<VideoPlayer>().Stop();
+                audioSource.clip = aClips[3];
+                audioSource.Play();
+                background.Play();
+                if(loaded == false) {
+                  Invoke("ToggleSave", 7.8f);
+                }
                 break;
               default:
                 print(button);
@@ -112,44 +122,45 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
             print("Raycast hitted: " + hit.transform.name);
             switch(button) {
               case "mountain_capsule":
+                ToggleSave();
                 x = -0.1f;
                 z = 0.1f;
-                // GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
-              //  transform.localScale = new Vector3(50,50,50);
-               // mShowGUIButton = true;
                 audioSource.clip = aClips[0];
-                //audioSource.Play();
-               // GameObject.Find("Fuji").transform.localPosition = new Vector3(x,0,z);
                 active = GameObject.Find("VideoMountain");
                 active.transform.localScale = new Vector3(0.01116154f, 0.005942067f, 0.0001076876f);
                 active.GetComponent<VideoPlayer>().Play();
-                // button.enabled = false;
                 break;
               case "ocean_capsule":
-                // GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
+                ToggleSave();
                 x = -0.6f;
                 z = -0.7f;
-               // transform.localScale = new Vector3(50,50,50);
-               // mShowGUIButton = true;
                 audioSource.clip = aClips[1];
-                //audioSource.Play();
-             //   GameObject.Find("Fuji").transform.localPosition = new Vector3(x,0,0.3f);
                 active = GameObject.Find("VideoOcean");
                 active.transform.localScale = new Vector3(0.01116154f, 0.005942067f, 0.0001076876f);
                 active.GetComponent<VideoPlayer>().Play();
                 break;
               case "temple_capsule":
-                // GameObject.Find(button).transform.localScale = new Vector3(0, 0, 0);
+                ToggleSave();
                 x = 0.1f;
                 z = -0.5f;
-              //  transform.localScale = new Vector3(50,50,50);
-              //  mShowGUIButton = true;
                 audioSource.clip = aClips[2];
-                //audioSource.Play();
-               // GameObject.Find("Fuji").transform.localPosition = new Vector3(x,0,z);
                 active = GameObject.Find("VideoTemple");
                 active.transform.localScale = new Vector3(0.01116154f, 0.005942067f, 0.0001076876f);
                 active.GetComponent<VideoPlayer>().Play();
+                break;
+              case "Reset_Fuji":
+                loaded = false;
+                timer = 0.0f;
+                audioSource.Stop();
+                background.Stop();
+                active.transform.localScale = new Vector3(0,0,0);
+                active.GetComponent<VideoPlayer>().Stop();
+                audioSource.clip = aClips[3];
+                audioSource.Play();
+                background.Play();
+                if(loaded == false) {
+                  Invoke("ToggleSave", 7.8f);
+                }
                 break;
               default:
                 print(button);
@@ -158,6 +169,10 @@ public class zoom : MonoBehaviour, ITrackableEventHandler {
           }
         }
     }
+
+  void ToggleSave() {
+      loaded = true;
+  }
 
   void OnGUI() {
     if (mShowGUIButton) {
